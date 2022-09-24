@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.NoSuchAlgorithmException;
+
 @Service
 @Controller
 @RequestMapping("/registration")
@@ -36,7 +38,7 @@ public class UserRegistrationController {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user")UserRegistrationDTO registrationDto){
+    public String registerUserAccount(@ModelAttribute("user")UserRegistrationDTO registrationDto) throws NoSuchAlgorithmException {
         System.out.println(registrationDto.toString());
         _userService.Save(registrationDto);
         return "redirect:/registration?success";
